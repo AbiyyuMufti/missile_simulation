@@ -35,3 +35,4 @@ codegen/
 octave-workspace
 *ert_rtw
 *:Zone.Identifier
+*.Identifier

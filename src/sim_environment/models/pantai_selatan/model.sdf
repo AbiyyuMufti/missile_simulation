@@ -7,7 +7,7 @@
           <geometry>
             <heightmap>
               <uri>model://pantai_selatan/materials/textures/heightmap.png</uri>
-              <size>2000 2000 100</size>
+              <size>1024 1024 25</size>
               <pos>0 0 -10</pos>
             </heightmap>
           </geometry>
@@ -40,7 +40,7 @@
                 <fade_dist>5</fade_dist>
               </blend>
               <uri>model://pantai_selatan/materials/textures/heightmap.png</uri>
-              <size>2000 2000 100</size>
+              <size>1000 1000 25</size>
               <pos>0 0 -10</pos>
             </heightmap>
           </geometry>

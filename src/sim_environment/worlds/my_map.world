@@ -15,9 +15,9 @@
     <include>
       <uri>model://pantai_selatan</uri>
     </include>
-    <!-- <include>
-        <uri>model://bali_sea</uri>
-    </include> -->
+    <include>
+        <uri>model://ocean</uri>
+    </include>
 
      <!-- <physics name='default_physics' default='0' type='ode'> -->
       <!-- <gravity>0 0 -9.8066</gravity>
