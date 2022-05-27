@@ -1,0 +1,55 @@
+exocetMM40:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 100
+
+  # Position Controllers --------------------------------------
+  fins_fold1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: fins_fold1
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  fins_rev1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: fins_rev1
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  fins_fold2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: fins_fold2
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  fins_rev2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: fins_rev2
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  fins_fold3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: fins_fold3
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  fins_rev3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: fins_rev3
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  fins_fold4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: fins_fold4
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  fins_rev4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: fins_rev4
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  wings_fold1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: wings_fold1
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  wings_fold2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: wings_fold2
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  wings_fold3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: wings_fold3
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  wings_fold4_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: wings_fold4
+    pid: {p: 100.0, i: 0.01, d: 10.0}
