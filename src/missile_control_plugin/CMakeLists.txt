@@ -7,7 +7,10 @@ add_definitions(-std=c++11)
 # Load catkin and all dependencies required for this package
 find_package(catkin REQUIRED COMPONENTS 
   roscpp 
-  gazebo_ros 
+  gazebo_ros
+  exocet_msgs
+  geometry_msgs
+  std_msgs
 )
 
 # Depend on system install of Gazebo
@@ -22,6 +25,7 @@ target_link_libraries(missile_control ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 
 
 catkin_package(
+  CATKIN_DEPENDS exocet_msgs geometry_msgs std_msgs
   DEPENDS 
     roscpp 
     gazebo_ros 
