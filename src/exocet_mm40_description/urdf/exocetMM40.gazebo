@@ -8,9 +8,17 @@
       <robotNamespace>/exocetMM40</robotNamespace>
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
   </plugin>
-
 </gazebo>
-<gazebo reference="base_link">
+
+<gazebo>
+  <plugin name="missile_control" filename="libmissile_control.so">
+    <missile_body>missile_body</missile_body>
+    <booster>Booster_1</booster>
+    <booster_joint>Rigid19</booster_joint>
+  </plugin>
+</gazebo>
+
+<gazebo reference="missile_body">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>

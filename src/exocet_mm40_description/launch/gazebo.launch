@@ -1,6 +1,7 @@
 <launch>
   <param name="robot_description" command="$(find xacro)/xacro $(find exocet_mm40_description)/urdf/exocetMM40.xacro"/>
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model exocetMM40"/>
+  <include file="$(find exocet_mm40_description)/launch/controller.launch"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find sim_environment)/worlds/runway.world"/> 
     <arg name="paused" value="true"/>
@@ -9,7 +10,7 @@
     <arg name="headless" value="false"/>
     <arg name="debug" value="false"/>
   </include>
-  <include file="$(find exocet_mm40_description)/launch/controller.launch"/>
+  
 </launch>
 
   
