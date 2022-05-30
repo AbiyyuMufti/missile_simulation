@@ -7,14 +7,8 @@ GZ_REGISTER_MODEL_PLUGIN(MissileControl)
 MissileControl::MissileControl()
 {
     this->booster_is_attached_ = true;
-    // this->thrust_force_.x = 0.0;
-    // this->thrust_force_.y = 0.0;
-    // this->thrust_force_.z = 0.0;
-    this->thrust_force_.Set(0,0,50000);
+    this->thrust_force_.Set(0,0,0);
     this->thrust_torque_.Set(0,0,0);
-    // this->thrust_torque_.x = 0.0;
-    // this->thrust_torque_.y = 0.0;
-    // this->thrust_torque_.z = 0.0;
 }
 MissileControl::~MissileControl()
 {
@@ -27,9 +21,6 @@ void MissileControl::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
     GZ_ASSERT(_sdf, "MissileControl _sdf pointer is NULL");
 
     this->model_ = _model;
-    // this->gazebo_ros_ = GazeboRosPtr ( new GazeboRos ( _model, _sdf, "MissileControl" ) );
-    // Make sure the ROS node for Gazebo has already been initialized
-    // this->gazebo_ros_->isInitialized();
 
     if (!this->FindLink("missile_body", _sdf, this->missile_body_link_, this->missile_body_link_name_))
         return;
@@ -44,13 +35,34 @@ void MissileControl::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
     // Listen to the update event. This event is broadcast every simulation iteration.
     this->updateConnection = event::Events::ConnectWorldUpdateBegin(std::bind(&MissileControl::OnUpdate, this, std::placeholders::_1));
 
-    // std::string prefix = "~/" + this->model_->GetName() + "/";
-    // std::string command_topic = prefix + "command";
-
-    // this->controlSub = this->gazebo_ros_->node()->subscribe(command_topic, 1, &MissileControl::OnExocetCommand, this);
-
     gzlog << "Missile ready to fly. The force will be with you" << std::endl;
     ROS_WARN("Loaded MissileControl Plugin with parent...%s", this->model_->GetName().c_str());
+
+    // // Initialize ros, if it has not already bee initialized.
+    // if (!ros::isInitialized())
+    // {
+    //     int argc = 0;
+    //     char **argv = NULL;
+    //     ros::init(argc, argv, "gazebo_client",
+    //         ros::init_options::NoSigintHandler);
+    // }
+
+    // // Create our ROS node. This acts in a similar manner to the Gazebo node
+    // this->rosNode.reset(new ros::NodeHandle("gazebo_client"));
+
+
+    // // Create a named topic, and subscribe to it.
+    // ros::SubscribeOptions so =
+    // ros::SubscribeOptions::create<std_msgs::Float32>(
+    //     "/" + this->model->GetName() + "/vel_cmd",
+    //     1,
+    //     boost::bind(&VelodynePlugin::OnRosMsg, this, _1),
+    //     ros::VoidPtr(), &this->rosQueue);
+    // this->rosSub = this->rosNode->subscribe(so);
+
+    // // Spin up the queue helper thread.
+    // this->rosQueueThread =
+    // std::thread(std::bind(&VelodynePlugin::QueueThread, this));
 
 }
 

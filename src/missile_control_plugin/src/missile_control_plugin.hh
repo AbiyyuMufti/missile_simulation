@@ -1,7 +1,9 @@
 #ifndef __MissileControl__
 #define __MissileControl__
 
-#include <functional>
+// sdf
+#include <sdf/sdf.hh>
+
 // Gazebo
 #include <gazebo/gazebo.hh>
 #include <gazebo/physics/physics.hh>
@@ -17,7 +19,6 @@
 #include <ignition/math/Vector3.hh>
 #include <ignition/common/Profiler.hh>
 #include <ignition/transport/Node.hh>
-
 #include <gazebo_plugins/gazebo_ros_utils.h>
 
 // ROS
@@ -36,12 +37,11 @@
 #include <boost/thread.hpp>
 #include <boost/bind.hpp>
 
-// Boost
-
-#include <sdf/sdf.hh>
+// c++
+#include <functional>
 #include <array>
 #include <mutex>
-
+#include <thread>
 
 
 
@@ -95,6 +95,17 @@ namespace gazebo
         ignition::math::Vector3d thrust_torque_;
 
 
+        /// \brief A node use for ROS transport
+        std::unique_ptr<ros::NodeHandle> rosNode;
+
+        /// \brief A ROS subscriber
+        ros::Subscriber rosSub;
+
+        /// \brief A ROS callbackqueue that helps process messages
+        ros::CallbackQueue rosQueue;
+
+        /// \brief A thread the keeps running the rosQueue
+        std::thread rosQueueThread;
 
     };
 }
