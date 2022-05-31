@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.2)
 project(exocet_msgs)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -110,7 +110,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES exocet_msgs
- CATKIN_DEPENDS message_runtime geometry_msgs message_generation sensor_msgs std_msgs std_srvs trajectory_msgs
+ CATKIN_DEPENDS message_runtime geometry_msgs sensor_msgs std_msgs std_srvs trajectory_msgs
 #  DEPENDS system_lib
 )
 

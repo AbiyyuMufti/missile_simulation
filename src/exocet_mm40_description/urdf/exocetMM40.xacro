@@ -297,7 +297,8 @@
     </geometry>
   </collision>
 </link>
-
+<!-- <xacro:property name="fins_limit_absolute" value="0.785398" /> -->
+<xacro:property name="fins_limit_absolute" value="0.349066" />
 <joint name="fins_fold1" type="revolute">
   <origin xyz="-0.04273 0.042755 0.0" rpy="0 0 0"/>
   <parent link="FinHolder_1"/>
@@ -311,7 +312,7 @@
   <parent link="missile_body"/>
   <child link="FinHolder_1"/>
   <axis xyz="-0.707107 0.707107 -0.0"/>
-  <limit upper="0.349066" lower="-0.349066" effort="100" velocity="100"/>
+  <limit upper="${fins_limit_absolute}" lower="${-1*fins_limit_absolute}" effort="100" velocity="100"/>
 </joint>
 
 <joint name="fins_fold2" type="revolute">
@@ -327,7 +328,7 @@
   <parent link="missile_body"/>
   <child link="FinHolder_4"/>
   <axis xyz="-0.707107 -0.707107 -0.0"/>
-  <limit upper="0.349066" lower="-0.349066" effort="100" velocity="100"/>
+  <limit upper="${fins_limit_absolute}" lower="${-1*fins_limit_absolute}" effort="100" velocity="100"/>
 </joint>
 
 <joint name="fins_fold3" type="revolute">
@@ -343,7 +344,7 @@
   <parent link="missile_body"/>
   <child link="FinHolder_3"/>
   <axis xyz="0.707107 -0.707107 0.0"/>
-  <limit upper="0.349066" lower="-0.349066" effort="100" velocity="100"/>
+  <limit upper="${fins_limit_absolute}" lower="${-1*fins_limit_absolute}" effort="100" velocity="100"/>
 </joint>
 
 <joint name="fins_fold4" type="revolute">
@@ -359,7 +360,7 @@
   <parent link="missile_body"/>
   <child link="FinHolder_2"/>
   <axis xyz="0.707107 0.707107 0.0"/>
-  <limit upper="0.349066" lower="-0.349066" effort="100" velocity="100"/>
+  <limit upper="${fins_limit_absolute}" lower="${-1*fins_limit_absolute}" effort="100" velocity="100"/>
 </joint>
 
 <joint name="wings_fold1" type="revolute">

@@ -2,14 +2,14 @@
     <arg name="joy_dev" default="/dev/input/js0" />
     <arg name="joy_topic" default="joy" />
     <node pkg="joy" type="joy_node" name="joy_node">
-      <!-- <param name="dev" value="$(arg joy_dev)" />
+      <param name="dev" value="$(arg joy_dev)" />
       <param name="deadzone" value="0.3" />
       <param name="autorepeat_rate" value="20" />
-      <remap from="joy" to="$(arg joy_topic)" /> -->
+      <remap from="joy" to="$(arg joy_topic)" />
     </node>
   
     <node pkg="joy_fins_driver" name="joy_fins_driver" type="node">
-      <!-- <rosparam command="load" file="$(arg config_filepath)" />
-      <remap from="joy" to="$(arg joy_topic)" /> -->
+      <!-- <rosparam command="load" file="$(arg config_filepath)" /> -->
+        <remap from="ExocetCMD" to="exocet_missile_ctrl/ExocetCMD" />
     </node>
-  </launch>
+</launch>

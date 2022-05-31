@@ -1,49 +1,23 @@
 #ifndef __MissileControl__
 #define __MissileControl__
 
-// sdf
-#include <sdf/sdf.hh>
-
-// Gazebo
+#include <functional>
+#include <mutex>
+#include <thread>
 #include <gazebo/gazebo.hh>
 #include <gazebo/physics/physics.hh>
 #include <gazebo/common/common.hh>
-#include <gazebo/common/Assert.hh>
-#include <gazebo/common/Plugin.hh>
-#include <gazebo/common/UpdateInfo.hh>
-#include <gazebo/msgs/msgs.hh>
-#include <gazebo/physics/physics.hh>
-#include <gazebo/physics/PhysicsTypes.hh>
-#include <gazebo/transport/transport.hh>
-#include <gazebo/transport/TransportTypes.hh>
 #include <ignition/math/Vector3.hh>
-#include <ignition/common/Profiler.hh>
-#include <ignition/transport/Node.hh>
-#include <gazebo_plugins/gazebo_ros_utils.h>
 
-// ROS
 #include <ros/ros.h>
-#include <tf/transform_broadcaster.h>
-#include <tf/transform_listener.h>
+#include <ros/callback_queue.h>
+#include <ros/subscribe_options.h>
+#include <std_msgs/Float32.h>
 #include <geometry_msgs/Wrench.h>
 #include <geometry_msgs/Vector3.h>
 #include <exocet_msgs/ExocetCMD.h>
-
-// Custom Callback Queue
-#include <ros/callback_queue.h>
-#include <ros/advertise_options.h>
-
-// Boost
-#include <boost/thread.hpp>
-#include <boost/bind.hpp>
-
-// c++
-#include <functional>
-#include <array>
-#include <mutex>
-#include <thread>
-
-
+#include <gazebo/transport/transport.hh>
+#include <gazebo/msgs/msgs.hh>
 
 
 namespace gazebo
@@ -66,7 +40,8 @@ namespace gazebo
         bool FindJoint(const std::string &_sdfParam, sdf::ElementPtr _sdf, physics::JointPtr &_joint, std::string &jointName);
         bool FindLink(const std::string &_sdfParam, sdf::ElementPtr _sdf, physics::LinkPtr &_link, std::string &linkName);
         void OnUpdate(const common::UpdateInfo &_info);
-        void OnExocetCommand(const exocet_msgs::ExocetCMD &_msg);
+        void OnExocetCommand(const exocet_msgs::ExocetCMDConstPtr &_msg);
+        void QueueThread();
         void Reset();
         void applyThrust();
         void detachingBooster();
@@ -91,6 +66,7 @@ namespace gazebo
         std::string booster_joint_name_;
 
         bool booster_is_attached_;
+        bool detaching_cmd;
         ignition::math::Vector3d thrust_force_;
         ignition::math::Vector3d thrust_torque_;
 

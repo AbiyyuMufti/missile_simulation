@@ -2,11 +2,15 @@
 #include <ros/ros.h>
 #include <sensor_msgs/Joy.h>
 #include <geometry_msgs/Vector3.h>
+#include <std_msgs/Float64.h>
 #include "joy_fins_driver/joy_fins_driver.h"
 
+#include <string>
 #include <map>
 #include <string>
-
+#include <algorithm>
+#include <array>
+#include <iterator>
 
 namespace fins_driver_joy
 {
@@ -23,6 +27,12 @@ struct FinsDriverJoy::Impl
 
   ros::Subscriber joy_sub;
   ros::Publisher exocet_cmd_pub;
+  
+  std::array<ros::Publisher, 4> wings_fold_pub;
+  std::array<ros::Publisher, 4> fins_fold_pub;
+  std::array<ros::Publisher, 4> fins_rev_pub;
+
+  // ros::wings_fold_publisher;
 
   int enable_button;
   int enable_turbo_button;
@@ -47,6 +57,16 @@ FinsDriverJoy::FinsDriverJoy(ros::NodeHandle* nh, ros::NodeHandle* nh_param)
 
   pimpl_->exocet_cmd_pub = nh->advertise<exocet_msgs::ExocetCMD>("ExocetCMD", 1, true);
   pimpl_->joy_sub = nh->subscribe<sensor_msgs::Joy>("joy", 1, &FinsDriverJoy::Impl::joyCallback, pimpl_);
+
+  for (size_t i = 0; i < 4; i++)
+  {
+    std::string wings_tpc = "/exocetMM40/wings_fold" + std::to_string(i+1) + "_position_controller/command";
+    pimpl_->wings_fold_pub[i] = nh->advertise<std_msgs::Float64>(wings_tpc, 1, true);
+    std::string fins_tpc = "/exocetMM40/fins_fold" + std::to_string(i+1) + "_position_controller/command";
+    pimpl_->fins_fold_pub[i] = nh->advertise<std_msgs::Float64>(fins_tpc, 1, true);
+    std::string rev_tpc = "/exocetMM40/fins_rev" + std::to_string(i+1) + "_position_controller/command";
+    pimpl_->fins_rev_pub[i] = nh->advertise<std_msgs::Float64>(rev_tpc, 1, true);
+  }
 
   nh_param->param<int>("enable_button", pimpl_->enable_button, 0);
   nh_param->param<int>("enable_turbo_button", pimpl_->enable_turbo_button, -1);
@@ -159,18 +179,48 @@ void FinsDriverJoy::Impl::joyCallback(const sensor_msgs::Joy::ConstPtr& joy_msg)
   geometry_msgs::Vector3 force;
   force.x = 0.0;
   force.y = 0.0;
-  force.x = 100000*joy_msg->axes[1];
+  force.z = 75000*joy_msg->axes[1];
   geometry_msgs::Vector3 torque;
-  if (force.x < 0.0)
+  if (force.z < 0.0)
   {
-    force.x = 0.0;
+    force.z = 0.0;
   }
   
-
   cmd.detach_booster = bool(joy_msg->buttons[5]);
   cmd.propulsion.force = force;
   
   exocet_cmd_pub.publish(cmd);
+
+  std_msgs::Float64 rev[4];
+
+  float dir = bool(joy_msg->buttons[4]) ? 1.0 : -1.0;
+  // float joint_limit = 0.785398;
+  float joint_limit = 0.349066;
+  rev[0].data = joint_limit*joy_msg->axes[3];
+  rev[2].data = dir*joint_limit*joy_msg->axes[3];
+  rev[1].data = joint_limit*joy_msg->axes[4];
+  rev[3].data = dir*joint_limit*joy_msg->axes[4];
+
+  for (size_t i = 0; i < 4; i++)
+  {
+    std_msgs::Float64 value;
+    value.data = 0.0;
+    fins_rev_pub[i].publish(rev[i]);
+  }
+
+  if (bool(joy_msg->buttons[8]))
+  {
+    static bool prev = 0;
+    prev = !prev;
+    std_msgs::Float64 val;
+    val.data = prev ? 2.0 : 0.0;
+    for (size_t i = 0; i < 4; i++)
+    {
+      wings_fold_pub[i].publish(val);
+      fins_fold_pub[i].publish(val);
+    }
+  }
+
   // if (enable_turbo_button >= 0 &&
   //     joy_msg->buttons.size() > enable_turbo_button &&
   //     joy_msg->buttons[enable_turbo_button])

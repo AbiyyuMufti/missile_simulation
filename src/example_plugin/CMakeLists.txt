@@ -25,8 +25,8 @@ add_library(model_push_plugin src/model_push.cc)
 target_link_libraries(model_push_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 
 # # For earthquake_plugin plugin
-# add_library(earthquake_plugin src/earthquake.cc)
-# target_link_libraries(earthquake_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+add_library(earthquake_plugin src/earthquake.cc)
+target_link_libraries(earthquake_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
 
 
 catkin_package(

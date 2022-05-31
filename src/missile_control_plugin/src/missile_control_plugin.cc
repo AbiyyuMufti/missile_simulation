@@ -7,6 +7,7 @@ GZ_REGISTER_MODEL_PLUGIN(MissileControl)
 MissileControl::MissileControl()
 {
     this->booster_is_attached_ = true;
+    this->detaching_cmd = false;
     this->thrust_force_.Set(0,0,0);
     this->thrust_torque_.Set(0,0,0);
 }
@@ -38,31 +39,30 @@ void MissileControl::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
     gzlog << "Missile ready to fly. The force will be with you" << std::endl;
     ROS_WARN("Loaded MissileControl Plugin with parent...%s", this->model_->GetName().c_str());
 
-    // // Initialize ros, if it has not already bee initialized.
-    // if (!ros::isInitialized())
-    // {
-    //     int argc = 0;
-    //     char **argv = NULL;
-    //     ros::init(argc, argv, "gazebo_client",
-    //         ros::init_options::NoSigintHandler);
-    // }
+    // Initialize ros, if it has not already bee initialized.
+    if (!ros::isInitialized())
+    {
+        int argc = 0;
+        char **argv = NULL;
+        ros::init(argc, argv, "exocet_missile_ctrl",
+            ros::init_options::NoSigintHandler);
+    }
 
     // // Create our ROS node. This acts in a similar manner to the Gazebo node
-    // this->rosNode.reset(new ros::NodeHandle("gazebo_client"));
+    this->rosNode.reset(new ros::NodeHandle("exocet_missile_ctrl"));
 
 
     // // Create a named topic, and subscribe to it.
-    // ros::SubscribeOptions so =
-    // ros::SubscribeOptions::create<std_msgs::Float32>(
-    //     "/" + this->model->GetName() + "/vel_cmd",
-    //     1,
-    //     boost::bind(&VelodynePlugin::OnRosMsg, this, _1),
-    //     ros::VoidPtr(), &this->rosQueue);
-    // this->rosSub = this->rosNode->subscribe(so);
-
+    ros::SubscribeOptions so =
+    ros::SubscribeOptions::create<exocet_msgs::ExocetCMD>(
+        "ExocetCMD", 
+        1,
+        boost::bind(&MissileControl::OnExocetCommand, this, _1),
+        ros::VoidPtr(), &this->rosQueue);
+    this->rosSub = this->rosNode->subscribe(so);
+    
     // // Spin up the queue helper thread.
-    // this->rosQueueThread =
-    // std::thread(std::bind(&VelodynePlugin::QueueThread, this));
+    this->rosQueueThread = std::thread(std::bind(&MissileControl::QueueThread, this));
 
 }
 
@@ -109,7 +109,7 @@ bool MissileControl::FindLink(const std::string &_sdfParam, sdf::ElementPtr _sdf
 void MissileControl::OnUpdate(const common::UpdateInfo &_info)
 {   
     this->applyThrust();
-    if (this->booster_is_attached_)
+    if (this->booster_is_attached_ && this->detaching_cmd)
     {
         gazebo::common::Time curTime = this->model_->GetWorld()->SimTime();
         double seconds_since_last_update = ( curTime - lastControllerUpdateTime ).Double();
@@ -122,9 +122,20 @@ void MissileControl::OnUpdate(const common::UpdateInfo &_info)
     }
 }
 
-void MissileControl::OnExocetCommand(const exocet_msgs::ExocetCMD &_msg)
+void MissileControl::OnExocetCommand(const exocet_msgs::ExocetCMDConstPtr &_msg)
 {
+    double val = _msg->propulsion.force.z;
+    this->thrust_force_.Set(0,0,val);
+    this->detaching_cmd = _msg->detach_booster;
+}
 
+void MissileControl::QueueThread()
+{
+    static const double timeout = 0.01;
+    while (this->rosNode->ok())
+    {
+        this->rosQueue.callAvailable(ros::WallDuration(timeout));
+    }
 }
 
 void MissileControl::Reset()
@@ -144,7 +155,6 @@ void MissileControl::Reset()
 
 void MissileControl::applyThrust()
 {
-    this->thrust_force_.Set(0,0,50000);
     if(this->booster_is_attached_){
         this->booster_link_->AddRelativeForce(this->thrust_force_);
     } else
