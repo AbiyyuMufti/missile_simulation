@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="inertial_macros.xacro"/>
+    <xacro:include filename="missile_properties.xacro"/>
+
+    <!-- base link -->
+    <link name="base_link"/>
+
+    <!-- missile main body -->
+    <joint name="missile_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="missile_body"/>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+    </joint>
+
+    <link name="missile_body">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder length="${missile_length}" radius="${missile_radius}"/>
+            </geometry>
+            <material name="white"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder length="${missile_length}" radius="${missile_radius}"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="1.0" length="${missile_length}" radius="${missile_radius}">
+            <origin xyz="0 0 0" rpy="0 ${pi/2} 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <!-- head missile -->
+    <joint name="booster_joint" type="fixed">
+        <parent link="missile_body" />
+        <child link="booster" />
+        <origin xyz="${-missile_length/2 - missile_length/5} 0 0" rpy="0 0 0" />
+    </joint>
+    <link name="booster">
+        <visual xyz="0 0 0" rpy="0 0 0">
+            <geometry>
+                <cylinder length="${missile_length/5}" radius="${missile_radius}"/>
+            </geometry>
+            <material name="white" />
+        </visual>
+        <collision xyz="0 0 0" rpy="0 0 0">
+            <geometry>
+                <cylinder length="${missile_length/5}" radius="${missile_radius}"/>
+            </geometry>
+            <material name="white" />
+        </collision>
+        <xacro:inertial_sphere mass="${head_mass}" radius="${missile_radius}">
+            <origin xyz="0 0 0" rpy="0 ${pi/2} 0"/>
+        </xacro:inertial_sphere>
+    </link>
+
+    <!-- <xacro:include filename="wings_group.xacro"/> -->
+    <!-- <xacro:include filename="fins_group.xacro"/> -->
+
+</robot>

@@ -1,0 +1,9 @@
+<launch>
+  <arg name="model" default="$(find exocet_mm40_main_description)/urdf/exocet_mm40_main.xacro"/>
+  <arg name="gui" default="true"/>
+  <arg name="rvizconfig" default="$(find exocet_mm40_main_description)/launch/urdf.rviz"/>
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+  <node name="rviz" pkg="rviz" args="-d $(arg rvizconfig)" type="rviz" required="true"/>
+</launch>

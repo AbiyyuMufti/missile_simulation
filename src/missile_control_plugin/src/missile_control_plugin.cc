@@ -29,7 +29,8 @@ void MissileControl::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
         return;
     if (!this->FindLink("booster", _sdf, this->booster_link_, this->booster_link_name_))
         return;
-
+    if (_sdf->HasElement("forward_dir"))
+        this->forward = _sdf->Get<ignition::math::Vector3d>("forward");
     // Controller time control.
     this->lastControllerUpdateTime = this->model_->GetWorld()->SimTime();
 

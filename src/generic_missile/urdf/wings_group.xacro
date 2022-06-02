@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="wing_body_desc">
+        <visual>
+            <origin xyz="${wing_height/2} 0 0" />
+            <geometry>
+                <box size="${wing_height} ${wing_thickness} ${wing_wide}" />
+            </geometry>
+            <material name="orange"/>
+        </visual>
+        <collision>
+            <origin xyz="${wing_height/2} 0 0" />
+            <geometry>
+                <box size="${wing_height} ${wing_thickness} ${wing_wide}" />
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="${wing_mass}" x="${wing_height}" y="${wing_thickness}" z="${wing_thickness}">
+            <origin xyz="${wing_height/2} 0 ${wing_wide/2}" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </xacro:macro>
+
+    <!-- 1st wing -->
+    <joint name="wing_1_joint" type="revolute">
+        <parent link="missile_body"/>
+        <child link="wing_1"/>
+        <origin xyz="${missile_radius + 0.02} 0 ${missile_length/2}" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${-pi*2/3}" upper="${pi*2/3}" velocity="100" effort="100"/> 
+    </joint>
+    <link name="wing_1">
+        <xacro:wing_body_desc />
+    </link>/>
+
+
+    <!-- 2nd wing -->
+    <!-- <joint name="wing_2_joint" type="revolute">
+        <parent link="missile_body"/>
+        <child link="wing_2"/>
+        <origin xyz="0 ${missile_radius + 0.02} ${missile_length/2}" rpy="0 0 ${pi/2}"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${-pi*2/3}" upper="${pi*2/3}" velocity="100" effort="100"/> 
+    </joint>
+    <link name="wing_2">
+        <xacro:wing_body_desc />
+    </link>/> -->
+
+
+    <!-- 3rd wing -->
+    <!-- <joint name="wing_3_joint" type="revolute">
+        <parent link="missile_body"/>
+        <child link="wing_3"/>
+        <origin xyz="${-missile_radius - 0.02} 0 ${missile_length/2}" rpy="0 0 ${pi}"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${-pi*2/3}" upper="${pi*2/3}" velocity="100" effort="100"/> 
+    </joint>
+    <link name="wing_3">
+        <xacro:wing_body_desc />
+    </link>/> -->
+
+
+    <!-- 4th wing -->
+    <!-- <joint name="wing_4_joint" type="revolute">
+        <parent link="missile_body"/>
+        <child link="wing_4"/>
+        <origin xyz="0 ${-missile_radius - 0.02} ${missile_length/2}" rpy="0 0 ${-pi/2}"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${-pi*2/3}" upper="${pi*2/3}" velocity="100" effort="100"/> 
+    </joint>
+    <link name="wing_4">
+        <xacro:wing_body_desc />
+    </link>/> -->
+</robot>

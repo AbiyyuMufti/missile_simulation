@@ -1,0 +1,9 @@
+<launch>
+
+<rosparam file="$(find exocet_mm40_main_description)/launch/controller.yaml" command="load"/>
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="exocet_mm40_main_controller" args="Wing1_Ref_position_controller Wing2_Rev_position_controller Wing3_Rev_position_controller Wing4_Rev_position_controller FinHold1_Rev_position_controller FinHold2_Rev_position_controller FinHold3_Rev_position_controller FinHold4_Rev_position_controller Fin1_Rev_position_controller Fin2_Rev_position_controller Fin3_Rev_position_controller Fin4_Rev_position_controller joint_state_controller "/>
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+  <remap from="/joint_states" to="/exocet_mm40_main/joint_states"/>
+</node>
+
+</launch>

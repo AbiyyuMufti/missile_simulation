@@ -4,7 +4,7 @@
   <include file="$(find joy_fins_driver)/launch/joystic.launch"/>
   <include file="$(find exocet_mm40_description)/launch/controller.launch"/>
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find sim_environment)/worlds/runway.world"/> 
+    <!-- <arg name="world_name" value="$(find sim_environment)/worlds/runway.world"/>  -->
     <arg name="paused" value="true"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>

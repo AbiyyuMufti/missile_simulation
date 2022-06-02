@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="finhold_body_desc">
+        <visual>
+            <origin xyz="${finhold_height/2} 0 0" />
+            <geometry>
+                <box size="${finhold_height} ${wing_thickness} ${fin_wide}" />
+            </geometry>
+            <material name="orange"/>
+        </visual>
+        <collision>
+            <origin xyz="${finhold_height/2} 0 0" />
+            <geometry>
+                <box size="${finhold_height} ${wing_thickness} ${fin_wide}" />
+            </geometry>
+        </collision>
+        <xacro:inertial_box mass="${finhold_mass}" x="${finhold_height}" y="${wing_thickness}" z="${fin_wide}">
+            <origin xyz="${finhold_height/2} 0 ${fin_wide/2}" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </xacro:macro>
+
+    <xacro:macro name="fin_body_desc">
+        <visual>
+            <origin xyz="${fin_height/2} 0 0" />
+            <geometry>
+                <box size="${fin_height} ${wing_thickness} ${fin_wide}" />
+            </geometry>
+            <material name="orange"/>
+        </visual>
+        <collision>
+            <origin xyz="${fin_height/2} 0 0" />
+            <geometry>
+                <box size="${fin_height} ${wing_thickness} ${fin_wide}" />
+            </geometry>
+            <material name="orange"/>
+        </collision>
+        <xacro:inertial_box mass="${fin_mass}" x="${fin_height}" y="${wing_thickness}" z="${fin_wide}">
+            <origin xyz="${fin_height/2} 0 ${fin_wide/2}" rpy="0 0 0"/>
+        </xacro:inertial_box>
+    </xacro:macro>
+
+    <!-- 1st fin holder -->
+    <joint name="finhold_1_joint" type="revolute">
+        <parent link="missile_body"/>
+        <child link="finhold_1"/>
+        <origin xyz="${missile_radius + 0.02} 0 ${fin_wide/2 + 0.1}" rpy="0 0 0"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="${-pi/9}" upper="${pi/9}" velocity="100" effort="100"/> 
+    </joint>
+    <link name="finhold_1">
+        <xacro:finhold_body_desc />
+    </link>/>
+
+    <!-- 2nd fin holder -->
+    <joint name="finhold_2_joint" type="revolute">
+        <parent link="missile_body"/>
+        <child link="finhold_2"/>
+        <origin xyz="0 ${missile_radius + 0.02} ${fin_wide/2 + 0.1}" rpy="0 0 ${pi/2}"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="${-pi/9}" upper="${pi/9}" velocity="100" effort="100"/> 
+    </joint>
+    <link name="finhold_2">
+        <xacro:finhold_body_desc />
+    </link>/>
+
+    <!-- 3rd fin holder -->
+    <joint name="finhold_3_joint" type="revolute">
+        <parent link="missile_body"/>
+        <child link="finhold_3"/>
+        <origin xyz="${-missile_radius - 0.02} 0 ${fin_wide/2 + 0.1}" rpy="0 0 ${pi}"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="${-pi/9}" upper="${pi/9}" velocity="100" effort="100"/> 
+    </joint>
+    <link name="finhold_3">
+        <xacro:finhold_body_desc />
+    </link>/>
+
+    <!-- 2nd fin holder -->
+    <joint name="finhold_4_joint" type="revolute">
+        <parent link="missile_body"/>
+        <child link="finhold_4"/>
+        <origin xyz="0 ${-missile_radius - 0.02} ${fin_wide/2 + 0.1}" rpy="0 0 ${-pi/2}"/>
+        <axis xyz="1 0 0"/>
+        <limit lower="${-pi/9}" upper="${pi/9}" velocity="100" effort="100"/> 
+    </joint>
+    <link name="finhold_4">
+        <xacro:finhold_body_desc />
+    </link>/>
+
+    <!-- 1st fin -->
+    <joint name="fin_1_joint" type="revolute">
+        <parent link="finhold_1"/>
+        <child link="fin_1"/>
+        <origin xyz="${finhold_height} 0 0" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${-pi*2/3}" upper="${pi*2/3}" velocity="100" effort="100"/> 
+    </joint>
+
+    <link name="fin_1">
+        <xacro:fin_body_desc />
+    </link>
+
+    <!-- 2nd fin -->
+    <joint name="fin_2_joint" type="revolute">
+        <parent link="finhold_2"/>
+        <child link="fin_2"/>
+        <origin xyz="${finhold_height} 0 0" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${-pi*2/3}" upper="${pi*2/3}" velocity="100" effort="100"/> 
+    </joint>
+
+    <link name="fin_2">
+        <xacro:fin_body_desc />
+    </link>
+
+    <!-- 3rd fin -->
+    <joint name="fin_3_joint" type="revolute">
+        <parent link="finhold_3"/>
+        <child link="fin_3"/>
+        <origin xyz="${finhold_height} 0 0" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${-pi*2/3}" upper="${pi*2/3}" velocity="100" effort="100"/> 
+    </joint>
+
+    <link name="fin_3">
+        <xacro:fin_body_desc />
+    </link>
+
+    <!-- 4th fin -->
+    <joint name="fin_4_joint" type="revolute">
+        <parent link="finhold_4"/>
+        <child link="fin_4"/>
+        <origin xyz="${finhold_height} 0 0" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="${-pi*2/3}" upper="${pi*2/3}" velocity="100" effort="100"/> 
+    </joint>
+
+    <link name="fin_4">
+        <xacro:fin_body_desc />
+    </link>
+
+</robot>

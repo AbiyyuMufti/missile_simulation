@@ -4,6 +4,7 @@
 #include <functional>
 #include <mutex>
 #include <thread>
+#include <vector>
 #include <gazebo/gazebo.hh>
 #include <gazebo/physics/physics.hh>
 #include <gazebo/common/common.hh>
@@ -69,7 +70,7 @@ namespace gazebo
         bool detaching_cmd;
         ignition::math::Vector3d thrust_force_;
         ignition::math::Vector3d thrust_torque_;
-
+        ignition::math::Vector3d forward;
 
         /// \brief A node use for ROS transport
         std::unique_ptr<ros::NodeHandle> rosNode;

@@ -1,0 +1,11 @@
+<launch>
+<param name="robot_description" command="$(find xacro)/xacro $(find exocet_mm40b3_description)/urdf/exocet_mm40b3.xacro"/>
+<rosparam file="$(find exocet_mm40b3_description)/launch/controller.yaml" command="load"/>
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" 
+  output="screen" 
+  ns="/exocet_mm40b3" args="fins_fold1_position_controller fins_rev1_position_controller fins_fold2_position_controller fins_rev2_position_controller fins_fold3_position_controller fins_rev3_position_controller fins_fold4_position_controller fins_rev4_position_controller wings_fold1_position_controller wings_fold2_position_controller wings_fold3_position_controller wings_fold4_position_controller joint_state_controller "/>
+<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+  <remap from="/joint_states" to="/exocet_mm40b3/joint_states"/>
+</node>
+
+</launch>

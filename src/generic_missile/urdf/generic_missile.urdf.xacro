@@ -1,0 +1,6 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="generic_missile">
+    <xacro:include filename="$(find generic_missile)/urdf/missile_core.xacro" />
+    <!-- <xacro:include filename="$(find generic_missile)/urdf/physical_missile.gazebo.xacro"/> -->
+    <!-- <xacro:include filename="$(find generic_missile)/urdf/control_missile.xacro"/> -->
+    <!-- <xacro:include filename="$(find generic_missile)/gazebo/plugins_missile.gazebo.xacro"/> -->
+</robot>

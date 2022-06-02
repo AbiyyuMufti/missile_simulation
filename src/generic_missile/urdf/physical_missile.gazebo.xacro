@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="standard_friction" value="1.0" />
+    
+    <gazebo reference="missile_body">
+        <material>Gazebo/White</material>
+        <!-- <mu1 value="${standard_friction}"/> -->
+        <!-- <mu2 value="${standard_friction}"/> -->
+        <!-- <selfCollide>true</selfCollide> -->
+    </gazebo>
+    <gazebo reference="finhold_1">
+        <material>Gazebo/Red</material>
+        <!-- <mu1 value="${standard_friction}"/> -->
+        <!-- <mu2 value="${standard_friction}"/> -->
+        <!-- <selfCollide>true</selfCollide> -->
+    </gazebo>
+    <gazebo reference="finhold_2">
+        <material>Gazebo/Red</material>
+        <!-- <mu1 value="${standard_friction}"/> -->
+        <!-- <mu2 value="${standard_friction}"/> -->
+        <!-- <selfCollide>true</selfCollide> -->
+    </gazebo>
+    <gazebo reference="finhold_3">
+        <material>Gazebo/Red</material>
+        <!-- <mu1 value="${standard_friction}"/> -->
+        <!-- <mu2 value="${standard_friction}"/> -->
+        <!-- <selfCollide>true</selfCollide> -->
+    </gazebo>
+    <gazebo reference="finhold_4">
+        <material>Gazebo/Red</material>
+        <!-- <mu1 value="${standard_friction}"/> -->
+        <!-- <mu2 value="${standard_friction}"/> -->
+        <!-- <selfCollide>true</selfCollide> -->
+    </gazebo>
+    <gazebo reference="fin_1">
+        <material>Gazebo/Red</material>
+        <!-- <mu1 value="${standard_friction}"/> -->
+        <!-- <mu2 value="${standard_friction}"/> -->
+        <!-- <selfCollide>true</selfCollide> -->
+    </gazebo>
+    <gazebo reference="fin_2">
+        <material>Gazebo/Red</material>
+        <!-- <mu1 value="${standard_friction}"/> -->
+        <!-- <mu2 value="${standard_friction}"/> -->
+        <!-- <selfCollide>true</selfCollide> -->
+    </gazebo>
+    <gazebo reference="fin_3">
+        <material>Gazebo/Red</material>
+        <!-- <mu1 value="${standard_friction}"/> -->
+        <!-- <mu2 value="${standard_friction}"/> -->
+        <!-- <selfCollide>true</selfCollide> -->
+    </gazebo>
+    <gazebo reference="fin_4">
+        <material>Gazebo/Red</material>
+        <!-- <mu1 value="${standard_friction}"/> -->
+        <!-- <mu2 value="${standard_friction}"/> -->
+        <!-- <selfCollide>true</selfCollide> -->
+    </gazebo>
+    <gazebo reference="wing_1">
+        <material>Gazebo/Red</material>
+    </gazebo>
+    <gazebo reference="wing_2">
+        <material>Gazebo/Red</material>
+    </gazebo>
+    <gazebo reference="wing_3">
+        <material>Gazebo/Red</material>
+    </gazebo>
+    <gazebo reference="wing_4">
+        <material>Gazebo/Red</material>
+    </gazebo>
+</robot>
