@@ -5,7 +5,6 @@
 <xacro:include filename="$(find exocet_mm40_description)/urdf/exocet_mm40.trans" />
 <xacro:include filename="$(find exocet_mm40_description)/urdf/exocet_mm40.gazebo" />
 
-
 <link name="missile_body">
   <inertial>
     <origin xyz="-3.612520852821801e-07 1.5558934439015813e-07 6.883168514448812e-07" rpy="0 0 0"/>
@@ -69,44 +68,44 @@
   </collision>
 </link>
 
-<link name="Fin_4">
+<link name="Fin_2">
   <inertial>
-    <origin xyz="1.867118081794506e-07 -0.059496893639904735 -0.01631015834990457" rpy="0 0 0"/>
+    <origin xyz="9.078419066712535e-08 0.05949620481876239 -0.016310158349880144" rpy="0 0 0"/>
     <mass value="3.7760500387858813"/>
-    <inertia ixx="0.017246" iyy="0.008513" izz="0.008976" ixy="-0.0" iyz="-0.002562" ixz="-0.0"/>
+    <inertia ixx="0.017246" iyy="0.008513" izz="0.008976" ixy="-0.0" iyz="0.002562" ixz="0.0"/>
   </inertial>
   <visual>
-    <origin xyz="1.9e-05 0.250447 2.066376" rpy="0 0 0"/>
+    <origin xyz="-1.8e-05 -0.250448 2.066376" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://exocet_mm40_description/meshes/Fin_4.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://exocet_mm40_description/meshes/Fin_2.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="1.9e-05 0.250447 2.066376" rpy="0 0 0"/>
+    <origin xyz="-1.8e-05 -0.250448 2.066376" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://exocet_mm40_description/meshes/Fin_4.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://exocet_mm40_description/meshes/Fin_2.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="FinHolder_4">
+<link name="FinHolder_2">
   <inertial>
-    <origin xyz="-2.941686595373585e-06 -0.03638580439433353 0.010891838967306722" rpy="0 0 0"/>
+    <origin xyz="2.219182592586881e-06 0.03638611557318952 0.01089183896732493" rpy="0 0 0"/>
     <mass value="2.2777645968314193"/>
-    <inertia ixx="0.014698" iyy="0.014" izz="0.0009" ixy="-0.0" iyz="-0.000141" ixz="0.0"/>
+    <inertia ixx="0.014698" iyy="0.014" izz="0.0009" ixy="-0.0" iyz="0.000141" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.0 0.19 2.066376" rpy="0 0 0"/>
+    <origin xyz="0.0 -0.19 2.066376" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://exocet_mm40_description/meshes/FinHolder_4.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://exocet_mm40_description/meshes/FinHolder_2.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0.0 0.19 2.066376" rpy="0 0 0"/>
+    <origin xyz="0.0 -0.19 2.066376" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://exocet_mm40_description/meshes/FinHolder_4.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://exocet_mm40_description/meshes/FinHolder_2.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -153,44 +152,44 @@
   </collision>
 </link>
 
-<link name="Fin_2">
+<link name="Fin_4">
   <inertial>
-    <origin xyz="9.078419066712535e-08 0.05949620481876239 -0.016310158349880144" rpy="0 0 0"/>
+    <origin xyz="1.867118081794506e-07 -0.059496893639904735 -0.01631015834990457" rpy="0 0 0"/>
     <mass value="3.7760500387858813"/>
-    <inertia ixx="0.017246" iyy="0.008513" izz="0.008976" ixy="-0.0" iyz="0.002562" ixz="0.0"/>
+    <inertia ixx="0.017246" iyy="0.008513" izz="0.008976" ixy="-0.0" iyz="-0.002562" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="-1.8e-05 -0.250448 2.066376" rpy="0 0 0"/>
+    <origin xyz="1.9e-05 0.250447 2.066376" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://exocet_mm40_description/meshes/Fin_2.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://exocet_mm40_description/meshes/Fin_4.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="-1.8e-05 -0.250448 2.066376" rpy="0 0 0"/>
+    <origin xyz="1.9e-05 0.250447 2.066376" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://exocet_mm40_description/meshes/Fin_2.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://exocet_mm40_description/meshes/Fin_4.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
 
-<link name="FinHolder_2">
+<link name="FinHolder_4">
   <inertial>
-    <origin xyz="2.219182592586881e-06 0.03638611557318952 0.01089183896732493" rpy="0 0 0"/>
+    <origin xyz="-2.941686595373585e-06 -0.03638580439433353 0.010891838967306722" rpy="0 0 0"/>
     <mass value="2.2777645968314193"/>
-    <inertia ixx="0.014698" iyy="0.014" izz="0.0009" ixy="-0.0" iyz="0.000141" ixz="-0.0"/>
+    <inertia ixx="0.014698" iyy="0.014" izz="0.0009" ixy="-0.0" iyz="-0.000141" ixz="0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.0 -0.19 2.066376" rpy="0 0 0"/>
+    <origin xyz="0.0 0.19 2.066376" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://exocet_mm40_description/meshes/FinHolder_2.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://exocet_mm40_description/meshes/FinHolder_4.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0.0 -0.19 2.066376" rpy="0 0 0"/>
+    <origin xyz="0.0 0.19 2.066376" rpy="0 0 0"/>
     <geometry>
-      <mesh filename="package://exocet_mm40_description/meshes/FinHolder_2.stl" scale="0.001 0.001 0.001"/>
+      <mesh filename="package://exocet_mm40_description/meshes/FinHolder_4.stl" scale="0.001 0.001 0.001"/>
     </geometry>
   </collision>
 </link>
@@ -218,19 +217,19 @@
 
 <link name="Wing2_1">
   <inertial>
-    <origin xyz="-4.228942575812411e-07 -0.09052962868193165 -0.021747636109048507" rpy="0 0 0"/>
-    <mass value="42.48975683460527"/>
-    <inertia ixx="1.519561" iyy="1.279002" izz="0.250002" ixy="-0.0" iyz="-0.062762" ixz="0.0"/>
+    <origin xyz="-3.6549684758302446e-07 0.09052893476130289 -0.02174761108764023" rpy="0 0 0"/>
+    <mass value="42.48976289872378"/>
+    <inertia ixx="1.519562" iyy="1.279004" izz="0.250002" ixy="0.0" iyz="0.062762" ixz="-0.0"/>
   </inertial>
   <visual>
-    <origin xyz="0.0 0.237728 0.761251" rpy="0 0 0"/>
+    <origin xyz="0.0 -0.237729 0.761251" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://exocet_mm40_description/meshes/Wing2_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0.0 0.237728 0.761251" rpy="0 0 0"/>
+    <origin xyz="0.0 -0.237729 0.761251" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://exocet_mm40_description/meshes/Wing2_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -239,19 +238,19 @@
 
 <link name="Wing3_1">
   <inertial>
-    <origin xyz="-3.6549684758302446e-07 0.09052893476130289 -0.02174761108764023" rpy="0 0 0"/>
-    <mass value="42.48976289872378"/>
-    <inertia ixx="1.519562" iyy="1.279004" izz="0.250002" ixy="0.0" iyz="0.062762" ixz="-0.0"/>
+    <origin xyz="0.09052942569385808 1.7817497290462115e-07 -0.02174754335871898" rpy="0 0 0"/>
+    <mass value="42.489775944812806"/>
+    <inertia ixx="1.279006" iyy="1.519565" izz="0.250002" ixy="-0.0" iyz="0.0" ixz="0.062762"/>
   </inertial>
   <visual>
-    <origin xyz="0.0 -0.237729 0.761251" rpy="0 0 0"/>
+    <origin xyz="-0.237728 -0.0 0.761251" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://exocet_mm40_description/meshes/Wing3_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="0.0 -0.237729 0.761251" rpy="0 0 0"/>
+    <origin xyz="-0.237728 -0.0 0.761251" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://exocet_mm40_description/meshes/Wing3_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -260,19 +259,19 @@
 
 <link name="Wing4_1">
   <inertial>
-    <origin xyz="0.09052942569385808 1.7817497290462115e-07 -0.02174754335871898" rpy="0 0 0"/>
-    <mass value="42.489775944812806"/>
-    <inertia ixx="1.279006" iyy="1.519565" izz="0.250002" ixy="-0.0" iyz="0.0" ixz="0.062762"/>
+    <origin xyz="-4.228942575812411e-07 -0.09052962868193165 -0.021747636109048507" rpy="0 0 0"/>
+    <mass value="42.48975683460527"/>
+    <inertia ixx="1.519561" iyy="1.279002" izz="0.250002" ixy="-0.0" iyz="-0.062762" ixz="0.0"/>
   </inertial>
   <visual>
-    <origin xyz="-0.237728 -0.0 0.761251" rpy="0 0 0"/>
+    <origin xyz="0.0 0.237728 0.761251" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://exocet_mm40_description/meshes/Wing4_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
     <material name="silver"/>
   </visual>
   <collision>
-    <origin xyz="-0.237728 -0.0 0.761251" rpy="0 0 0"/>
+    <origin xyz="0.0 0.237728 0.761251" rpy="0 0 0"/>
     <geometry>
       <mesh filename="package://exocet_mm40_description/meshes/Wing4_1.stl" scale="0.001 0.001 0.001"/>
     </geometry>
@@ -317,18 +316,18 @@
 </joint>
 
 <joint name="fins_fold2" type="revolute">
-  <origin xyz="-1.9e-05 -0.060447 0.0" rpy="0 0 0"/>
-  <parent link="FinHolder_4"/>
-  <child link="Fin_4"/>
+  <origin xyz="1.8e-05 0.060448 0.0" rpy="0 0 0"/>
+  <parent link="FinHolder_2"/>
+  <child link="Fin_2"/>
   <axis xyz="0.0 0.0 -1.0"/>
   <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
 </joint>
 
 <joint name="fins_rev2" type="revolute">
-  <origin xyz="0.0 -0.19 -2.066376" rpy="0 0 0"/>
+  <origin xyz="0.0 0.19 -2.066376" rpy="0 0 0"/>
   <parent link="missile_body"/>
-  <child link="FinHolder_4"/>
-  <axis xyz="0.0 -1.0 -0.0"/>
+  <child link="FinHolder_2"/>
+  <axis xyz="-0.0 1.0 0.0"/>
   <limit upper="0.349066" lower="-0.349066" effort="100" velocity="100"/>
 </joint>
 
@@ -349,18 +348,18 @@
 </joint>
 
 <joint name="fins_fold4" type="revolute">
-  <origin xyz="1.8e-05 0.060448 0.0" rpy="0 0 0"/>
-  <parent link="FinHolder_2"/>
-  <child link="Fin_2"/>
+  <origin xyz="-1.9e-05 -0.060447 0.0" rpy="0 0 0"/>
+  <parent link="FinHolder_4"/>
+  <child link="Fin_4"/>
   <axis xyz="0.0 0.0 -1.0"/>
   <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
 </joint>
 
 <joint name="fins_rev4" type="revolute">
-  <origin xyz="0.0 0.19 -2.066376" rpy="0 0 0"/>
+  <origin xyz="0.0 -0.19 -2.066376" rpy="0 0 0"/>
   <parent link="missile_body"/>
-  <child link="FinHolder_2"/>
-  <axis xyz="-0.0 1.0 0.0"/>
+  <child link="FinHolder_4"/>
+  <axis xyz="0.0 -1.0 -0.0"/>
   <limit upper="0.349066" lower="-0.349066" effort="100" velocity="100"/>
 </joint>
 
@@ -373,7 +372,7 @@
 </joint>
 
 <joint name="wings_fold2" type="revolute">
-  <origin xyz="0.0 -0.237728 -0.761251" rpy="0 0 0"/>
+  <origin xyz="0.0 0.237729 -0.761251" rpy="0 0 0"/>
   <parent link="missile_body"/>
   <child link="Wing2_1"/>
   <axis xyz="0.0 0.0 -1.0"/>
@@ -381,7 +380,7 @@
 </joint>
 
 <joint name="wings_fold3" type="revolute">
-  <origin xyz="0.0 0.237729 -0.761251" rpy="0 0 0"/>
+  <origin xyz="0.237728 0.0 -0.761251" rpy="0 0 0"/>
   <parent link="missile_body"/>
   <child link="Wing3_1"/>
   <axis xyz="0.0 0.0 -1.0"/>
@@ -389,14 +388,14 @@
 </joint>
 
 <joint name="wings_fold4" type="revolute">
-  <origin xyz="0.237728 0.0 -0.761251" rpy="0 0 0"/>
+  <origin xyz="0.0 -0.237728 -0.761251" rpy="0 0 0"/>
   <parent link="missile_body"/>
   <child link="Wing4_1"/>
   <axis xyz="0.0 0.0 -1.0"/>
   <limit upper="2.094395" lower="-2.094395" effort="100" velocity="100"/>
 </joint>
 
-<joint name="Rigid19" type="fixed">
+<joint name="Detachable" type="fixed">
   <origin xyz="0.0 0.0 -2.246376" rpy="0 0 0"/>
   <parent link="missile_body"/>
   <child link="Booster_1"/>
