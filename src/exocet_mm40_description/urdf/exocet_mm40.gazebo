@@ -1,15 +1,25 @@
 <?xml version="1.0" ?>
-<robot name="exocet_mm40_booster" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+<robot name="exocet_mm40" xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
 <xacro:property name="body_color" value="Gazebo/Silver" />
 
 <gazebo>
-  <plugin name="exocet_mm40_booster_controller" filename="libgazebo_ros_control.so">
-    <robotNamespace>exocet_mm40_booster_controller</robotNamespace>
+  <plugin name="exocet_mm40_controller" filename="libgazebo_ros_control.so">
+    <robotNamespace>exocet_mm40_controller</robotNamespace>
     <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
   </plugin>
 </gazebo>
-<gazebo reference="base_link">
+
+<gazebo>
+  <plugin name="missile_control" filename="libmissile_control.so">
+    <missile_body>missile_body</missile_body>
+    <booster>Booster_1</booster>
+    <booster_joint>Rigid19</booster_joint>
+    <forward_dir>0 0 1</forward_dir>
+  </plugin>
+</gazebo>
+
+<gazebo reference="missile_body">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
@@ -17,95 +27,99 @@
   <gravity>true</gravity>
 </gazebo>
 
-<gazebo reference="wing_1">
+<gazebo reference="Fin_1">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="wing_2">
+<gazebo reference="FinHolder_1">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="wing_3">
+<gazebo reference="Fin_4">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="wing_4">
+<gazebo reference="FinHolder_4">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="fin_holder_1">
+<gazebo reference="Fin_3">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="fin_holder_2">
+<gazebo reference="FinHolder_3">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="fin_holder_3">
+<gazebo reference="Fin_2">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="fin_holder_4">
+<gazebo reference="FinHolder_2">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="fin_1">
+<gazebo reference="Wing1_1">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="fin_2">
+<gazebo reference="Wing2_1">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="fin_3">
+<gazebo reference="Wing3_1">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="fin_4">
+<gazebo reference="Wing4_1">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
 </gazebo>
 
-<gazebo reference="booster_1">
+<gazebo reference="Booster_1">
   <material>${body_color}</material>
   <mu1>0.2</mu1>
   <mu2>0.2</mu2>
   <selfCollide>true</selfCollide>
+</gazebo>
+
+<gazebo reference='Rigid19'>
+  <preserveFixedJoint>true</preserveFixedJoint>
 </gazebo>
 
 </robot>

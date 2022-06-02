@@ -30,7 +30,7 @@ void MissileControl::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
     if (!this->FindLink("booster", _sdf, this->booster_link_, this->booster_link_name_))
         return;
     if (_sdf->HasElement("forward_dir"))
-        this->forward = _sdf->Get<ignition::math::Vector3d>("forward");
+        this->forward = _sdf->Get<ignition::math::Vector3d>("forward_dir");
     // Controller time control.
     this->lastControllerUpdateTime = this->model_->GetWorld()->SimTime();
 
@@ -126,7 +126,11 @@ void MissileControl::OnUpdate(const common::UpdateInfo &_info)
 void MissileControl::OnExocetCommand(const exocet_msgs::ExocetCMDConstPtr &_msg)
 {
     double val = _msg->propulsion.force.z;
-    this->thrust_force_.Set(0,0,val);
+
+    this->thrust_force_ = this->forward * val;
+    // ROS_WARN_STREAM("forward_dir " << this->forward);
+    // ROS_WARN_STREAM("Force " << this->thrust_force_);
+    // this->thrust_force_.Set(0,0,val);
     this->detaching_cmd = _msg->detach_booster;
 }
 

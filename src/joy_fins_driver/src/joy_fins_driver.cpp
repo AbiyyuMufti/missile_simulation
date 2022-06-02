@@ -60,11 +60,11 @@ FinsDriverJoy::FinsDriverJoy(ros::NodeHandle* nh, ros::NodeHandle* nh_param)
 
   for (size_t i = 0; i < 4; i++)
   {
-    std::string wings_tpc = "/exocetMM40/wings_fold" + std::to_string(i+1) + "_position_controller/command";
+    std::string wings_tpc = "/exocet_mm40_controller/wings_fold" + std::to_string(i+1) + "_position_controller/command";
     pimpl_->wings_fold_pub[i] = nh->advertise<std_msgs::Float64>(wings_tpc, 1, true);
-    std::string fins_tpc = "/exocetMM40/fins_fold" + std::to_string(i+1) + "_position_controller/command";
+    std::string fins_tpc = "/exocet_mm40_controller/fins_fold" + std::to_string(i+1) + "_position_controller/command";
     pimpl_->fins_fold_pub[i] = nh->advertise<std_msgs::Float64>(fins_tpc, 1, true);
-    std::string rev_tpc = "/exocetMM40/fins_rev" + std::to_string(i+1) + "_position_controller/command";
+    std::string rev_tpc = "/exocet_mm40_controller/fins_rev" + std::to_string(i+1) + "_position_controller/command";
     pimpl_->fins_rev_pub[i] = nh->advertise<std_msgs::Float64>(rev_tpc, 1, true);
   }
 

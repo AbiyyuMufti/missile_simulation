@@ -1,8 +1,8 @@
-exocetMM40:
+exocet_mm40_controller:
   # Publish all joint states -----------------------------------
   joint_state_controller:
     type: joint_state_controller/JointStateController
-    publish_rate: 1000
+    publish_rate: 50
 
   # Position Controllers --------------------------------------
   fins_fold1_position_controller:

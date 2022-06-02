@@ -1,5 +1,5 @@
 <launch>
-  <arg name="model" default="$(find exocet_mm40_description)/urdf/exocetMM40.xacro"/>
+  <arg name="model" default="$(find exocet_mm40_description)/urdf/exocet_mm40.xacro"/>
   <arg name="gui" default="true"/>
   <arg name="rvizconfig" default="$(find exocet_mm40_description)/launch/urdf.rviz"/>
   <param name="robot_description" command="$(find xacro)/xacro $(arg model)"/>

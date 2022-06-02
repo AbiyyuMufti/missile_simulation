@@ -1,133 +1,133 @@
 <?xml version="1.0" ?>
-<robot name="exocet_mm40_main" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+<robot name="exocet_mm40" xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
-<transmission name="Wing1_Ref_tran">
+<transmission name="fins_fold1_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="Wing1_Ref">
+  <joint name="fins_fold1">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="Wing1_Ref_actr">
+  <actuator name="fins_fold1_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="Wing2_Rev_tran">
+<transmission name="fins_rev1_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="Wing2_Rev">
+  <joint name="fins_rev1">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="Wing2_Rev_actr">
+  <actuator name="fins_rev1_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="Wing3_Rev_tran">
+<transmission name="fins_fold2_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="Wing3_Rev">
+  <joint name="fins_fold2">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="Wing3_Rev_actr">
+  <actuator name="fins_fold2_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="Wing4_Rev_tran">
+<transmission name="fins_rev2_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="Wing4_Rev">
+  <joint name="fins_rev2">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="Wing4_Rev_actr">
+  <actuator name="fins_rev2_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="FinHold1_Rev_tran">
+<transmission name="fins_fold3_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="FinHold1_Rev">
+  <joint name="fins_fold3">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="FinHold1_Rev_actr">
+  <actuator name="fins_fold3_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="FinHold2_Rev_tran">
+<transmission name="fins_rev3_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="FinHold2_Rev">
+  <joint name="fins_rev3">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="FinHold2_Rev_actr">
+  <actuator name="fins_rev3_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="FinHold3_Rev_tran">
+<transmission name="fins_fold4_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="FinHold3_Rev">
+  <joint name="fins_fold4">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="FinHold3_Rev_actr">
+  <actuator name="fins_fold4_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="FinHold4_Rev_tran">
+<transmission name="fins_rev4_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="FinHold4_Rev">
+  <joint name="fins_rev4">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="FinHold4_Rev_actr">
+  <actuator name="fins_rev4_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="Fin1_Rev_tran">
+<transmission name="wings_fold1_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="Fin1_Rev">
+  <joint name="wings_fold1">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="Fin1_Rev_actr">
+  <actuator name="wings_fold1_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="Fin2_Rev_tran">
+<transmission name="wings_fold2_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="Fin2_Rev">
+  <joint name="wings_fold2">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="Fin2_Rev_actr">
+  <actuator name="wings_fold2_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="Fin3_Rev_tran">
+<transmission name="wings_fold3_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="Fin3_Rev">
+  <joint name="wings_fold3">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="Fin3_Rev_actr">
+  <actuator name="wings_fold3_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="Fin4_Rev_tran">
+<transmission name="wings_fold4_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="Fin4_Rev">
+  <joint name="wings_fold4">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="Fin4_Rev_actr">
+  <actuator name="wings_fold4_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
